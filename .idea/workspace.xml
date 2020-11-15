@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7f07c39a-9a09-47fc-b586-6810093ae202" name="Default Changelist" comment="" />
+    <list default="true" id="7f07c39a-9a09-47fc-b586-6810093ae202" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/decolle/subnetmlp_decolle_model1.py" beforeDir="false" afterPath="$PROJECT_DIR$/decolle/subnetmlp_decolle_model1.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -17,7 +20,11 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1jBT1gNXWUm0daZknUGaznrJq4O" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -25,6 +32,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../slayer_pytorch" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
@@ -205,7 +213,7 @@
       <workItem from="1603526867209" duration="20257000" />
       <workItem from="1603866375105" duration="16201000" />
       <workItem from="1603901484825" duration="68160000" />
-      <workItem from="1605150479500" duration="7292000" />
+      <workItem from="1605150479500" duration="8184000" />
     </task>
     <servers />
   </component>
@@ -213,6 +221,14 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="618" y="99" width="865" height="913" key="CommitChangelistDialog2" timestamp="1605462481582">
+      <screen x="63" y="27" width="1985" height="1059" />
+    </state>
+    <state x="618" y="99" width="865" height="913" key="CommitChangelistDialog2/63.27.1985.1059@63.27.1985.1059" timestamp="1605462481582" />
+    <state x="252" y="117" width="1588" height="877" key="DiffContextDialog" timestamp="1605462477648">
+      <screen x="63" y="27" width="1985" height="1059" />
+    </state>
+    <state x="252" y="117" width="1588" height="877" key="DiffContextDialog/63.27.1985.1059@63.27.1985.1059" timestamp="1605462477648" />
     <state x="838" y="314" width="424" height="484" key="FileChooserDialogImpl" timestamp="1604480596300">
       <screen x="63" y="27" width="1985" height="1059" />
     </state>

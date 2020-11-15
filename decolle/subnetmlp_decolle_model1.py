@@ -55,122 +55,6 @@ class subnetmlpDECOLLE(DECOLLEBase):
 
         super(subnetmlpDECOLLE, self).__init__()
 
-    #     self.l1_1, self.ro1_1 = self.decolle_linear(inF = 16*16,outF = 64,out_channels=11,
-    #                          alpha=alpha[0],
-    #                          beta=beta[0],
-    #                          alpharp=alpharp[0],
-    #                          deltat=deltat,
-    #                          lc_ampl=lc_ampl,
-    #                          lif_layer_type = LIFLayer,
-    #                          do_detach= True if method == 'rtrl' else False)
-    #     self.l1_2, self.ro1_2 = self.decolle_linear(inF = 16*16,outF = 64,out_channels=11,
-    #                          alpha=alpha[0],
-    #                          beta=beta[0],
-    #                          alpharp=alpharp[0],
-    #                          deltat=deltat,
-    #                          lc_ampl=lc_ampl,
-    #                          lif_layer_type = LIFLayer,
-    #                          do_detach= True if method == 'rtrl' else False)
-    #     self.l1_3, self.ro1_3 = self.decolle_linear(inF = 16*16,outF = 64,out_channels=11,
-    #                          alpha=alpha[0],
-    #                          beta=beta[0],
-    #                          alpharp=alpharp[0],
-    #                          deltat=deltat,
-    #                          lc_ampl=lc_ampl,
-    #                          lif_layer_type = LIFLayer,
-    #                          do_detach= True if method == 'rtrl' else False)
-    #     self.l1_4, self.ro1_4 = self.decolle_linear(inF = 16*16,outF = 64,out_channels=11,
-    #                          alpha=alpha[0],
-    #                          beta=beta[0],
-    #                          alpharp=alpharp[0],
-    #                          deltat=deltat,
-    #                          lc_ampl=lc_ampl,
-    #                          lif_layer_type = LIFLayer,
-    #                          do_detach= True if method == 'rtrl' else False)
-    #
-    #     self.l2, self.ro2 = self.decolle_linear(inF = 256,outF = 256,out_channels=11,
-    #                          alpha=alpha[0],
-    #                          beta=beta[0],
-    #                          alpharp=alpharp[0],
-    #                          deltat=deltat,
-    #                          lc_ampl=lc_ampl,
-    #                          lif_layer_type = LIFLayer,
-    #                          do_detach= True if method == 'rtrl' else False)
-    #
-    #     self.l3, self.ro3 = self.decolle_linear(inF = 256,outF = 11,out_channels=11,
-    #                          alpha=alpha[0],
-    #                          beta=beta[0],
-    #                          alpharp=alpharp[0],
-    #                          deltat=deltat,
-    #                          lc_ampl=lc_ampl,
-    #                          lif_layer_type = LIFLayer,
-    #                          do_detach= True if method == 'rtrl' else False,
-    #                          is_output_layer = True)
-    #     self.LIF_layers.append(self.l1_1)
-    #     self.LIF_layers.append(self.l1_2)
-    #     self.LIF_layers.append(self.l1_3)
-    #     self.LIF_layers.append(self.l1_4)
-    #     self.LIF_layers.append(self.l2)
-    #     self.LIF_layers.append(self.l3)
-    #     self.readout_layers.append(self.ro1_1)
-    #     self.readout_layers.append(self.ro1_2)
-    #     self.readout_layers.append(self.ro1_3)
-    #     self.readout_layers.append(self.ro1_4)
-    #     self.readout_layers.append(self.ro2)
-    #     self.readout_layers.append(self.ro3)
-    #
-    #
-    #
-    # def forward(self, input):
-    #     s_out = []
-    #     u_out = []
-    #     r_out = []
-    #
-    #     input =  input[:, 0, :, :]          # remove polarity
-    #
-    #     input0 = input[:, 0::2, 0::2].reshape((input.shape[0],-1))
-    #     input1 = input[:, 0::2, 1::2].reshape((input.shape[0],-1))
-    #     input2 = input[:, 1::2, 0::2].reshape((input.shape[0],-1))
-    #     input3 = input[:, 1::2, 1::2].reshape((input.shape[0],-1))
-    #     #print('in0',input0.shape)
-    #     s1_1, u1_1 = self.l1_1(input0)
-    #     ro1_1 = self.ro1_1
-    #     r1_1 = ro1_1(s1_1)
-    #     print('ro1_1', ro1_1)
-    #     s_out.append(s1_1)
-    #     u_out.append(u1_1)
-    #     r_out.append(r1_1)
-    #     s1_2, u1_2 = self.l1_2(input1)
-    #     r1_2 = self.ro1_2(s1_2)
-    #     s_out.append(s1_2)
-    #     u_out.append(u1_2)
-    #     r_out.append(r1_2)
-    #     s1_3, u1_3 = self.l1_3(input2)
-    #     r1_3 = self.ro1_3(s1_3)
-    #     s_out.append(s1_3)
-    #     u_out.append(u1_3)
-    #     r_out.append(r1_3)
-    #     s1_4, u1_4 = self.l1_4(input3)
-    #     r1_4 = self.ro1_4(s1_4)
-    #     s_out.append(s1_4)
-    #     u_out.append(u1_4)
-    #     r_out.append(r1_4)
-    #     s_cat = torch.cat((s1_1, s1_2, s1_3, s1_4), dim=1)
-    #     u_cat = torch.cat((u1_1, u1_2, u1_3, u1_4), dim=1)
-    #     s2, u2 = self.l2(s_cat)
-    #     #s2 = sigmoid(u2)
-    #     r2 = self.ro2(s2)
-    #     s_out.append(s2)
-    #     u_out.append(u2)
-    #     r_out.append(r2)
-    #     s3, u3, = self.l3(s2)
-    #     #s3 = sigmoid(u3)
-    #     r3 = self.ro3(s3)
-    #     s_out.append(s3)
-    #     u_out.append(u3)
-    #     r_out.append(r3)
-    #
-    #     return s_out, r_out, u_out
 
         l1_1, ro1_1 = self.decolle_linear(inF=16 * 16, outF=256, out_channels=11,
                                                     alpha=alpha[0],
@@ -287,6 +171,7 @@ class subnetmlpDECOLLE(DECOLLEBase):
         s_out.append(s2)
         u_out.append(u2)
         r_out.append(r2)
+
         # s3, u3, = self.LIF_layers[5](s2)
         # s3 = self.LIF_layers[3].sg_function(u3)
         # # s3 = sigmoid(u3)
