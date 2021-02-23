@@ -12,13 +12,12 @@
 from decolle.subnetmlp_decolle_model import subnetmlpDECOLLE, DECOLLELoss, LIFLayerVariableTau, LIFLayer
 from decolle.utils import parse_args, train, test, accuracy, save_checkpoint, load_model_from_checkpoint, prepare_experiment, write_stats, cross_entropy_one_hot
 import datetime, os, socket, tqdm
-from loader_tests import create_dvsgestures_attn
 import numpy as np
 import torch
 import importlib
 os.environ['CUDA_VISIBLE_DEVICES'] = '1'
 np.set_printoptions(precision=4)
-args = parse_args('parameters/params_dvsgestures_subnetmlp.yml')
+args = parse_args('parameters/params_dvsgestures_subnetmlp5class.yml')
 device = args.device
 
 
@@ -44,9 +43,10 @@ gen_train, gen_test = create_data(chunk_size_train=params['chunk_size_train'],
                                   num_workers=params['num_dl_workers'])
 
 data_batch, target_batch = next(iter(gen_train))
+print('databatch target',params['batch_size'], data_batch.shape,target_batch.shape)
 data_batch = torch.Tensor(data_batch).to(device)
 target_batch = torch.Tensor(target_batch).to(device)
-print('data target',data_batch.shape, target_batch.shape)
+
 #d, t = next(iter(gen_train))
 input_shape = data_batch.shape[-3:]
 
@@ -72,17 +72,22 @@ net = subnetmlpDECOLLE( out_channels=params['out_channels'],
                     method=params['learning_method'],
                     with_output_layer=False).to(device)
 
+# print('trainable', [k for k in net.get_trainable_named_parameters()])
 print('layers',[[k, v.shape] for k, v in net.name_param()])
-print('trainable', [k for k in net.get_trainable_named_parameters()])
+for k, v in net.name_param():
+    for i in range(4):
+        if k == 'LIF_layers.{:d}.base_layer.weight'.format(i):
+            v = torch.FloatTensor(np.load('Trained/fc{:d}.npy'.format(i))).to(device)
+
+
 if hasattr(params['learning_rate'], '__len__'):
     from decolle.utils import MultiOpt
     opts = []
-
     for i in range(len(params['learning_rate'])):
-
         opts.append(torch.optim.Adamax(net.get_trainable_parameters(i), lr=params['learning_rate'][i], betas=params['betas']))
     opt = MultiOpt(*opts)
 else:
+    print('opt trainable', net.get_trainable_parameters())
     opt = torch.optim.Adamax(net.get_trainable_parameters(), lr=params['learning_rate'], betas=params['betas'])
 
 reg_l = params['reg_l'] if 'reg_l' in params else None
@@ -130,21 +135,20 @@ if not args.no_train:
             print('Changing learning rate from {} to {}'.format(lr, opt.param_groups[-1]['lr']))
             opt.param_groups[-1]['lr'] = np.array(params['learning_rate'])
 
-        if (e % params['test_interval']) == 0 and e != 0:
+        if (e % params['test_interval']) == 0 and e!=0:
             print('---------------Epoch {}-------------'.format(e))
             if not args.no_save:
                 print('---------Saving checkpoint---------')
-                save_checkpoint(e, checkpoint_dir, net, opt)
+                #save_checkpoint(e, checkpoint_dir, net, opt)
 
-            test_loss, test_acc, spikes = test(gen_test, decolle_loss, net, params['burnin_steps'], print_error = True)
+            test_loss, test_acc, spike = test(gen_test, decolle_loss, net, params['burnin_steps'], print_error = True)
             test_acc_hist.append(test_acc)
 
-            if not args.no_save:
-                write_stats(e, test_acc, test_loss, spikes, writer)
-                np.save(log_dir+'/test_acc.npy', np.array(test_acc_hist),)
-
+            #if not args.no_save:
+                #write_stats(e, test_acc, test_loss, spike, writer)
+                #np.save(log_dir+'/test_acc.npy', np.array(test_acc_hist),)
+        print('gentrain', gen_train)
         total_loss, act_rate = train(gen_train, decolle_loss, net, opt, e, params['burnin_steps'], online_update=params['online_update'])
-        if not args.no_save:
-            for i in range(len(net)):
-                writer.add_scalar('/act_rate/{0}'.format(i), act_rate[i], e)
-                writer.add_scalar('/learning_rate/{0}'.format(i), opt.param_groups[-1]['lr'], e)
+        # if not args.no_save:
+        #     for i in range(len(net)):
+                #writer.add_scalar('/act_rate/{0}'.format(i), act_rate[i], e)

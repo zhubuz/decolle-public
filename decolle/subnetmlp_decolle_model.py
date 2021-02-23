@@ -127,7 +127,7 @@ class subnetmlpDECOLLE(DECOLLEBase):
         r_out = []
 
         input = input[:, 0, :, :]  # remove polarity
-        print('input', input.shape)
+
         input0 = input[:, 0::2, 0::2].reshape((input.shape[0], -1))
         input1 = input[:, 0::2, 1::2].reshape((input.shape[0], -1))
         input2 = input[:, 1::2, 0::2].reshape((input.shape[0], -1))

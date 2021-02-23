@@ -9,7 +9,7 @@
 # Copyright : (c) UC Regents, Emre Neftci
 # Licence : GPLv2
 #-----------------------------------------------------------------------------
-from decolle.mlp_decolle_attn import mlpDECOLLE, DECOLLELoss, LIFLayerVariableTau, LIFLayer
+from decolle.mlp_decolle_attn_quan import mlpDECOLLE, DECOLLELoss, LIFLayerVariableTau, LIFLayer
 from decolle.utils import parse_args, train, test, accuracy, save_checkpoint, load_model_from_checkpoint, prepare_experiment, write_stats, cross_entropy_one_hot
 import datetime, os, socket, tqdm
 from loader_tests.create_dvsgestures_attn import create_attn_dataloader

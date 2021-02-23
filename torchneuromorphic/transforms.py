@@ -98,13 +98,14 @@ class CropCenter(object):
 
 class Attention(object):
     def __init__(self, n_attention_events, size):
-        '''
+        '''D
         Crop around the median event in the last n_events.
         '''
         self.att_shape = np.array(size[1:], dtype=np.int64)
         self.n_att_events = n_attention_events
 
     def __call__(self, tmad):
+        #print('tmad',tmad.shape)
         df = pd.DataFrame(tmad, columns=['t', 'p', 'x', 'y'])
         # compute centroid in x and y
         centroids = df.loc[:, ['x', 'y']].rolling(window=self.n_att_events,
@@ -121,7 +122,7 @@ class Attention(object):
 class ToChannelHeightWidth(object):
     def __call__(self, tmad):
         n = tmad.shape[1]
-        if n==2:
+        if n == 2:
             o = np.zeros(tmad.shape[0], dtype=tmad.dtype)
             return np.column_stack([tmad, o, o])
 
@@ -197,6 +198,59 @@ class ToEventSum(object):
     def __repr__(self):
         return self.__class__.__name__ + '()'
 
+class FilterEvents(object):
+    def __init__(self, kernel = None, groups = 1, tpad = None):
+        self.kernel = kernel
+        self.groups = groups
+        if tpad is None:
+            self.tpad = self.kernel.shape[2]//2
+        else:
+            self.tpad = tpad
+
+    def __call__(self, chunks):
+        if len(chunks.shape)==4:
+            data = chunks.permute([1,0,2,3])
+            data = data.unsqueeze(0)
+        else:
+            data = chunks.permute([0,2,1,3,4])
+
+        Y = torch.nn.functional.conv3d(data, self.kernel, groups=self.groups, padding= [self.tpad,0,0])
+        Y = Y.transpose(1,2)
+        if len(chunks.shape)==4:
+            return Y[0]
+        else:
+            return Y
+
+class ExpFilterEvents(FilterEvents):
+    def __init__(self, chunk_size, tau=200, channels=2, tpad = None, device='cpu', **kwargs):
+        t = torch.arange(0.,np.minimum(5.*tau,chunk_size),1.)
+        kernel = torch.ones(channels, 1, len(t), 1, 1)
+        exp_kernel = torch.exp(-t/tau)
+        exp_kernel/=exp_kernel.sum()
+        groups = 2
+
+        for i in range(channels):
+            kernel[i,0,:,0,0]=exp_kernel
+        kernel = kernel.to(device)
+
+        super(ExpFilterEvents, self).__init__(kernel, groups, tpad, **kwargs)
+
+class Rescale(object):
+    """Rescale the event sum Tensor by the given factor.
+
+    Args:
+        factor: : Desired rescale factor. 
+    """
+    def __init__(self, factor):
+        self.factor = factor
+
+    def __call__(self, chunks):
+        return chunks*self.factor
+
+    def __repr__(self):
+        return self.__class__.__name__ + '({0})'.format(self.factor)
+
+
 
 class Repeat(object):
     '''
@@ -217,6 +271,9 @@ class ToTensor(object):
     Converts a numpy.ndarray to a torch.FloatTensor of the same shape
     """
 
+    def __init__(self, device='cpu'):
+        self.device=device
+
     def __call__(self, frame):
         """
         Args:
@@ -225,7 +282,7 @@ class ToTensor(object):
         Returns:
             Tensor: Converted data.
         """
-        return torch.FloatTensor(frame)
+        return torch.FloatTensor(frame).to(self.device)
 
     def __repr__(self):
-        return self.__class__.__name__ + '()'
+        return self.__class__.__name__ + '(device:{0})'.format(self.device)

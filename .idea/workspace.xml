@@ -3,7 +3,29 @@
   <component name="ChangeListManager">
     <list default="true" id="7f07c39a-9a09-47fc-b586-6810093ae202" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/decolle/subnetmlp_decolle_model1.py" beforeDir="false" afterPath="$PROJECT_DIR$/decolle/subnetmlp_decolle_model1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/decolle/base_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/decolle/base_model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/decolle/load_dvsraw.py" beforeDir="false" afterPath="$PROJECT_DIR$/decolle/load_dvsraw.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/decolle/mlp_decolle_attn.py" beforeDir="false" afterPath="$PROJECT_DIR$/decolle/mlp_decolle_attn.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/decolle/mlp_decolle_attn_quan.py" beforeDir="false" afterPath="$PROJECT_DIR$/decolle/mlp_decolle_attn_quan.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/decolle/spikeIO.py" beforeDir="false" afterPath="$PROJECT_DIR$/decolle/spikeIO.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/decolle/subnetmlp_decolle_6class.py" beforeDir="false" afterPath="$PROJECT_DIR$/decolle/subnetmlp_decolle_6class.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/decolle/subnetmlp_decolle_bp.py" beforeDir="false" afterPath="$PROJECT_DIR$/decolle/subnetmlp_decolle_bp.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/decolle/subnetmlp_decolle_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/decolle/subnetmlp_decolle_model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/decolle/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/decolle/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/parameters/params_dvsgestures_mlp.yml" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/parameters/params_dvsgestures_mlp.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/parameters/params_dvsgestures_mlp_quan.yml" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/parameters/params_dvsgestures_mlp_quan.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/parameters/params_dvsgestures_subnetmlp.yml" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/parameters/params_dvsgestures_subnetmlp.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/train_lenet_delle.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/train_lenet_delle.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/train_mlp_attn.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/train_mlp_attn.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/train_mlp_attn_quan.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/train_mlp_attn_quan.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/train_subnetmlp_6class.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/train_subnetmlp_6class.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/train_subnetmlp_bp.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/train_subnetmlp_bp.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/train_subnetmlp_decolle.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/train_subnetmlp_decolle.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/torchneuromorphic/doublenmnist/doublenmnist_dataloaders.py" beforeDir="false" afterPath="$PROJECT_DIR$/torchneuromorphic/doublenmnist/doublenmnist_dataloaders.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/torchneuromorphic/dvs_gestures/dvsgestures_dataloaders.py" beforeDir="false" afterPath="$PROJECT_DIR$/torchneuromorphic/dvs_gestures/dvsgestures_dataloaders.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/torchneuromorphic/nmnist/nmnist_dataloaders.py" beforeDir="false" afterPath="$PROJECT_DIR$/torchneuromorphic/nmnist/nmnist_dataloaders.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/torchneuromorphic/transforms.py" beforeDir="false" afterPath="$PROJECT_DIR$/torchneuromorphic/transforms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/torchneuromorphic/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/torchneuromorphic/utils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,15 +44,27 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="MERGE" />
   </component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="hiddenUrls">
+      <set>
+        <option value="git@github.com:zhubuz/decolle-public.git" />
+      </set>
+    </option>
+  </component>
+  <component name="JupyterTrust" id="3f1573c1-5637-4b83-b4d9-3f518ac5a5ac" />
   <component name="ProjectId" id="1jBT1gNXWUm0daZknUGaznrJq4O" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -45,20 +79,22 @@
     </option>
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/decolle" />
+      <recent name="$PROJECT_DIR$/scripts" />
+      <recent name="$PROJECT_DIR$/scripts/parameters" />
+      <recent name="$PROJECT_DIR$/scripts/data/dvsgesture" />
+      <recent name="$PROJECT_DIR$/scripts/data" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/scripts" />
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/scripts/data/DvsGesture" />
       <recent name="$PROJECT_DIR$/scripts/data/DvsGestures" />
       <recent name="$PROJECT_DIR$/scripts/data" />
-      <recent name="$PROJECT_DIR$/scripts" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/decolle" />
-      <recent name="$PROJECT_DIR$/scripts/parameters" />
-      <recent name="$PROJECT_DIR$/scripts" />
-      <recent name="$PROJECT_DIR$/scripts/data" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.train_subnetmlp_decolle">
+  <component name="RunManager" selected="Python.train_mlp_attn_quan">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <module name="decolle-public" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -73,28 +109,6 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="true" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="mlp_decolle_model" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="decolle-public" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/decolle" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/decolle/mlp_decolle_model.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -118,14 +132,14 @@
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/scripts/train_lenet_decolle.py" />
       <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
       <option name="REDIRECT_INPUT" value="false" />
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="train_lenet_delle" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="train_mlp_attn" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="decolle-public" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -138,7 +152,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/scripts/train_lenet_delle.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/scripts/train_mlp_attn.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -147,7 +161,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="train_mlp_decolle" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="train_mlp_attn_quan" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="decolle-public" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -160,9 +174,31 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/scripts/train_mlp_decolle.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/scripts/train_mlp_attn_quan.py" />
       <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="train_subnetmlp_6class" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="decolle-public" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/scripts" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/scripts/train_subnetmlp_6class.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
       <option name="REDIRECT_INPUT" value="false" />
@@ -173,6 +209,9 @@
       <module name="decolle-public" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/scripts" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -190,11 +229,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.train_mlp_attn_quan" />
         <item itemvalue="Python.train_subnetmlp_decolle" />
+        <item itemvalue="Python.train_mlp_attn" />
         <item itemvalue="Python.train_lenet_decolle" />
-        <item itemvalue="Python.train_mlp_decolle" />
-        <item itemvalue="Python.mlp_decolle_model" />
-        <item itemvalue="Python.train_lenet_delle" />
+        <item itemvalue="Python.train_subnetmlp_6class" />
       </list>
     </recent_temporary>
   </component>
@@ -213,70 +252,141 @@
       <workItem from="1603526867209" duration="20257000" />
       <workItem from="1603866375105" duration="16201000" />
       <workItem from="1603901484825" duration="68160000" />
-      <workItem from="1605150479500" duration="8184000" />
+      <workItem from="1605150479500" duration="63508000" />
+      <workItem from="1606104821704" duration="7092000" />
+      <workItem from="1606148235683" duration="12680000" />
+      <workItem from="1606363193104" duration="40809000" />
+      <workItem from="1606705424074" duration="10323000" />
+      <workItem from="1606935980753" duration="9249000" />
+      <workItem from="1607099273006" duration="1806000" />
+      <workItem from="1607518741264" duration="3741000" />
+      <workItem from="1607659194377" duration="1324000" />
+      <workItem from="1607832130873" duration="3847000" />
+      <workItem from="1608096051951" duration="877000" />
+      <workItem from="1608172981507" duration="601000" />
+      <workItem from="1608529072066" duration="21169000" />
+      <workItem from="1609227003354" duration="3222000" />
+      <workItem from="1609505043769" duration="645000" />
+      <workItem from="1609579273192" duration="16467000" />
+      <workItem from="1609824528442" duration="816000" />
+      <workItem from="1609908644584" duration="21999000" />
+      <workItem from="1610343104528" duration="3194000" />
+      <workItem from="1610516657709" duration="9215000" />
+      <workItem from="1610939877947" duration="599000" />
+      <workItem from="1611076353184" duration="13052000" />
+      <workItem from="1611812354549" duration="14000" />
+      <workItem from="1611989748659" duration="605000" />
+      <workItem from="1612063318567" duration="11355000" />
+      <workItem from="1612851160645" duration="1099000" />
+      <workItem from="1612936706135" duration="602000" />
+      <workItem from="1613109205253" duration="5324000" />
+      <workItem from="1613973885619" duration="871000" />
+      <workItem from="1614061240814" duration="3815000" />
     </task>
+    <task id="LOCAL-00001" summary="up to date">
+      <created>1605462553192</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1605462553192</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="up to date" />
+    <option name="LAST_COMMIT_MESSAGE" value="up to date" />
+  </component>
   <component name="WindowStateProjectService">
-    <state x="618" y="99" width="865" height="913" key="CommitChangelistDialog2" timestamp="1605462481582">
+    <state x="618" y="99" width="865" height="913" key="CommitChangelistDialog2" timestamp="1605462553056">
       <screen x="63" y="27" width="1985" height="1059" />
     </state>
-    <state x="618" y="99" width="865" height="913" key="CommitChangelistDialog2/63.27.1985.1059@63.27.1985.1059" timestamp="1605462481582" />
+    <state x="618" y="99" width="865" height="913" key="CommitChangelistDialog2/63.27.1985.1059@63.27.1985.1059" timestamp="1605462553056" />
     <state x="252" y="117" width="1588" height="877" key="DiffContextDialog" timestamp="1605462477648">
       <screen x="63" y="27" width="1985" height="1059" />
     </state>
     <state x="252" y="117" width="1588" height="877" key="DiffContextDialog/63.27.1985.1059@63.27.1985.1059" timestamp="1605462477648" />
-    <state x="838" y="314" width="424" height="484" key="FileChooserDialogImpl" timestamp="1604480596300">
+    <state x="411" y="356" width="374" height="866" key="FileChooserDialogImpl" timestamp="1613974116145">
+      <screen x="63" y="27" width="1017" height="1893" />
+    </state>
+    <state x="411" y="338" width="374" height="818" key="FileChooserDialogImpl/63.27.1017.1789@63.27.1017.1789" timestamp="1609316370345" />
+    <state x="411" y="356" width="374" height="866" key="FileChooserDialogImpl/63.27.1017.1893@63.27.1017.1893" timestamp="1613974116145" />
+    <state x="742" y="211" width="424" height="484" key="FileChooserDialogImpl/63.27.1985.1059@63.27.1985.1059" timestamp="1613921442379" />
+    <state width="1939" height="347" key="GridCell.Tab.0.bottom" timestamp="1606156264831">
       <screen x="63" y="27" width="1985" height="1059" />
     </state>
-    <state x="838" y="314" width="424" height="484" key="FileChooserDialogImpl/63.27.1985.1059@63.27.1985.1059" timestamp="1604480596300" />
-    <state width="1939" height="309" key="GridCell.Tab.0.bottom" timestamp="1605011641452">
+    <state width="1939" height="347" key="GridCell.Tab.0.bottom/63.27.1985.1059@63.27.1985.1059" timestamp="1606156264831" />
+    <state width="1939" height="347" key="GridCell.Tab.0.center" timestamp="1606156264827">
       <screen x="63" y="27" width="1985" height="1059" />
     </state>
-    <state width="1939" height="309" key="GridCell.Tab.0.bottom/63.27.1985.1059@63.27.1985.1059" timestamp="1605011641452" />
-    <state width="1939" height="309" key="GridCell.Tab.0.center" timestamp="1605011641450">
+    <state width="1939" height="347" key="GridCell.Tab.0.center/63.27.1985.1059@63.27.1985.1059" timestamp="1606156264827" />
+    <state width="1939" height="347" key="GridCell.Tab.0.left" timestamp="1606156264825">
       <screen x="63" y="27" width="1985" height="1059" />
     </state>
-    <state width="1939" height="309" key="GridCell.Tab.0.center/63.27.1985.1059@63.27.1985.1059" timestamp="1605011641450" />
-    <state width="1939" height="309" key="GridCell.Tab.0.left" timestamp="1605011641448">
+    <state width="1939" height="347" key="GridCell.Tab.0.left/63.27.1985.1059@63.27.1985.1059" timestamp="1606156264825" />
+    <state width="1939" height="347" key="GridCell.Tab.0.right" timestamp="1606156264829">
       <screen x="63" y="27" width="1985" height="1059" />
     </state>
-    <state width="1939" height="309" key="GridCell.Tab.0.left/63.27.1985.1059@63.27.1985.1059" timestamp="1605011641448" />
-    <state width="1939" height="309" key="GridCell.Tab.0.right" timestamp="1605011641451">
+    <state width="1939" height="347" key="GridCell.Tab.0.right/63.27.1985.1059@63.27.1985.1059" timestamp="1606156264829" />
+    <state width="1939" height="347" key="GridCell.Tab.1.bottom" timestamp="1606156264838">
       <screen x="63" y="27" width="1985" height="1059" />
     </state>
-    <state width="1939" height="309" key="GridCell.Tab.0.right/63.27.1985.1059@63.27.1985.1059" timestamp="1605011641451" />
-    <state width="1939" height="385" key="GridCell.Tab.1.bottom" timestamp="1605011161667">
+    <state width="1939" height="347" key="GridCell.Tab.1.bottom/63.27.1985.1059@63.27.1985.1059" timestamp="1606156264838" />
+    <state width="1939" height="347" key="GridCell.Tab.1.center" timestamp="1606156264834">
       <screen x="63" y="27" width="1985" height="1059" />
     </state>
-    <state width="1939" height="385" key="GridCell.Tab.1.bottom/63.27.1985.1059@63.27.1985.1059" timestamp="1605011161667" />
-    <state width="1939" height="385" key="GridCell.Tab.1.center" timestamp="1605011161663">
+    <state width="1939" height="347" key="GridCell.Tab.1.center/63.27.1985.1059@63.27.1985.1059" timestamp="1606156264834" />
+    <state width="1939" height="347" key="GridCell.Tab.1.left" timestamp="1606156264832">
       <screen x="63" y="27" width="1985" height="1059" />
     </state>
-    <state width="1939" height="385" key="GridCell.Tab.1.center/63.27.1985.1059@63.27.1985.1059" timestamp="1605011161663" />
-    <state width="1939" height="385" key="GridCell.Tab.1.left" timestamp="1605011161662">
+    <state width="1939" height="347" key="GridCell.Tab.1.left/63.27.1985.1059@63.27.1985.1059" timestamp="1606156264832" />
+    <state width="1939" height="347" key="GridCell.Tab.1.right" timestamp="1606156264836">
       <screen x="63" y="27" width="1985" height="1059" />
     </state>
-    <state width="1939" height="385" key="GridCell.Tab.1.left/63.27.1985.1059@63.27.1985.1059" timestamp="1605011161662" />
-    <state width="1939" height="385" key="GridCell.Tab.1.right" timestamp="1605011161666">
+    <state width="1939" height="347" key="GridCell.Tab.1.right/63.27.1985.1059@63.27.1985.1059" timestamp="1606156264836" />
+    <state x="63" y="320" key="SettingsEditor" timestamp="1611128994801">
+      <screen x="63" y="27" width="1017" height="1893" />
+    </state>
+    <state x="63" y="304" key="SettingsEditor/63.27.1017.1789@63.27.1017.1789" timestamp="1610696917321" />
+    <state x="63" y="320" key="SettingsEditor/63.27.1017.1893@63.27.1017.1893" timestamp="1611128994801" />
+    <state x="544" y="191" key="SettingsEditor/63.27.1985.1059@63.27.1985.1059" timestamp="1605768110192" />
+    <state width="992" height="529" key="XDebugger.FullValuePopup" timestamp="1606551342489">
       <screen x="63" y="27" width="1985" height="1059" />
     </state>
-    <state width="1939" height="385" key="GridCell.Tab.1.right/63.27.1985.1059@63.27.1985.1059" timestamp="1605011161666" />
-    <state x="544" y="191" key="SettingsEditor" timestamp="1603360264203">
+    <state width="992" height="529" key="XDebugger.FullValuePopup/63.27.1985.1059@63.27.1985.1059" timestamp="1606551342489" />
+    <state x="63" y="628" width="1007" height="584" key="com.intellij.execution.console.ConsoleHistoryController$MyBrowseAction$1" timestamp="1609747565333">
+      <screen x="63" y="27" width="1017" height="1789" />
+    </state>
+    <state x="63" y="628" width="1007" height="584" key="com.intellij.execution.console.ConsoleHistoryController$MyBrowseAction$1/63.27.1017.1789@63.27.1017.1789" timestamp="1609747565333" />
+    <state x="663" y="153" width="774" height="806" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1605776546865">
       <screen x="63" y="27" width="1985" height="1059" />
     </state>
-    <state x="544" y="191" key="SettingsEditor/63.27.1985.1059@63.27.1985.1059" timestamp="1603360264203" />
-    <state width="992" height="529" key="XDebugger.FullValuePopup" timestamp="1603987333500">
+    <state x="663" y="153" width="774" height="806" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/63.27.1985.1059@63.27.1985.1059" timestamp="1605776546865" />
+    <state x="823" y="475" width="454" height="160" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1609075042254">
       <screen x="63" y="27" width="1985" height="1059" />
     </state>
-    <state width="992" height="529" key="XDebugger.FullValuePopup/63.27.1985.1059@63.27.1985.1059" timestamp="1603987333500" />
-    <state x="663" y="153" width="774" height="806" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1604030373918">
-      <screen x="63" y="27" width="1985" height="1059" />
+    <state x="823" y="475" width="454" height="160" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/63.27.1985.1059@63.27.1985.1059" timestamp="1609075042254" />
+    <state x="235" y="618" width="670" height="676" key="search.everywhere.popup" timestamp="1606720765146">
+      <screen x="63" y="27" width="1017" height="1893" />
     </state>
-    <state x="663" y="153" width="774" height="806" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/63.27.1985.1059@63.27.1985.1059" timestamp="1604030373918" />
+    <state x="235" y="618" width="670" height="676" key="search.everywhere.popup/63.27.1017.1893@63.27.1017.1893" timestamp="1606720765146" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -298,19 +408,26 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/scripts/train_subnetmlp_decolle.py</url>
-          <line>83</line>
+          <line>84</line>
           <option name="timeStamp" value="17" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/decolle/base_model.py</url>
-          <line>434</line>
-          <option name="timeStamp" value="18" />
+          <url>file://$PROJECT_DIR$/scripts/train_mlp_attn.py</url>
+          <line>143</line>
+          <option name="timeStamp" value="22" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/scripts/Tedecolle.py</url>
+          <line>11</line>
+          <option name="timeStamp" value="28" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/decolle_public$train_subnetmlp_decolle.coverage" NAME="train_subnetmlp_decolle Coverage Results" MODIFIED="1603990275002" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/scripts" />
+    <SUITE FILE_PATH="coverage/decolle_public$Nosetests_in_test_decolle_py.coverage" NAME="Nosetests in test_decolle.py Coverage Results" MODIFIED="1605636013728" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/scripts" />
+    <SUITE FILE_PATH="coverage/decolle_public$train_mlp_attn.coverage" NAME="train_mlp_attn Coverage Results" MODIFIED="1606156047273" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/scripts" />
     <SUITE FILE_PATH="coverage/decolle_public$train_mlp_decolle.coverage" NAME="train_mlp_decolle Coverage Results" MODIFIED="1604335862745" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/scripts" />
     <SUITE FILE_PATH="coverage/decolle_public$train_lenet_decolle.coverage" NAME="train_lenet_decolle Coverage Results" MODIFIED="1605011641430" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/scripts" />
     <SUITE FILE_PATH="coverage/decolle_public$mlp_decolle_model.coverage" NAME="mlp_decolle_model Coverage Results" MODIFIED="1603712086001" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/decolle" />

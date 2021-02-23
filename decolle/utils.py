@@ -244,10 +244,15 @@ def get_activities(gen_train, decolle_loss, net, opt, epoch, burnin, online_upda
 
     print('Loss {0}'.format(total_loss))
     print('Activity Rate {0}'.format(act_rate))
-    return total_loss, act_rate, s_hist, r_hist, u_hist 
+    return total_loss, act_rate, s_hist, r_hist, u_hist
 
 
-def train(gen_train, decolle_loss, net, opt, epoch, burnin, online_update=True, batches_per_epoch=-1):
+def weights_init(m):
+    if type(m) == torch.nn.Linear:
+        torch.nn.init.normal_(m.weight.data, 20., 1.)
+        print('init params', m, torch.max(m.weight.data), torch.min(m.weight.data))
+
+def train(gen_train, decolle_loss, net, opt, epoch, burnin, online_update= True, batches_per_epoch=-1):
     '''
     Trains a DECOLLE network
 
@@ -274,9 +279,11 @@ def train(gen_train, decolle_loss, net, opt, epoch, burnin, online_update=True, 
     else:
         dtype = net.LIF_layers[0].weight.dtype
     batch_iter = 0
-    
+
+    #net.apply(weights_init)
+
     for data_batch, target_batch in tqdm.tqdm(iter_gen_train, desc='Epoch {}'.format(epoch)):
-        #print('data_batch', data_batch.shape)
+        #print('utidata279',data_batch.shape)
         data_batch = torch.Tensor(data_batch).type(dtype).to(device)
         target_batch = torch.Tensor(target_batch).type(dtype).to(device)
         if len(target_batch.shape) == 2:
@@ -289,15 +296,18 @@ def train(gen_train, decolle_loss, net, opt, epoch, burnin, online_update=True, 
         loss_mask = (target_batch.sum(2) > 0).unsqueeze(2).float()
         #print('loss mask',loss_mask.shape, loss_mask)
         # loss_mask = (data_batch.reshape(data_batch.shape[0],data_batch.shape[1],-1).mean(2)>0.01).unsqueeze(2).float()
+        #print('datautil', data_batch.shape)
         net.init(data_batch, burnin)
         t_sample = data_batch.shape[1]
         for k in (range(burnin,t_sample)):
+
             s, r, u = net.forward(data_batch[:, k, :, :])
             loss_ = decolle_loss(s, r, u, target=target_batch[:,k,:], mask = loss_mask[:,k,:], sum_ = False)
-            # print('loss_', loss_)
+            #print('loss_', loss_)
             total_loss += tonp(torch.Tensor(loss_))
+            #print('total_loss', total_loss, sum(loss_))
             loss_tv += sum(loss_)
-            # print('loss_tv',loss_tv)
+            #print('loss_tv',loss_tv)
             if online_update: 
                 loss_tv.backward()
                 opt.step()
@@ -361,6 +371,130 @@ def test(gen_test, decolle_loss, net, burnin, print_error = True, debug = False)
             test_labels += tonp(target_batch).sum(1).argmax(axis=-1).tolist()
         test_acc  = accuracy(np.column_stack(test_res), np.column_stack(test_labels))
         test_loss /= len(gen_test)
+        if print_error:
+            print(' '.join(['Error Rate L{0} {1:1.3}'.format(j, 1-v) for j, v in enumerate(test_acc)]))
+    if debug:
+        return test_loss, test_acc, s, r, u
+    else:
+        return test_loss, test_acc, s
+
+
+
+def trainbp(gen_train, loss, net, opt, epoch, online_update = True, batches_per_epoch=-1):
+    '''
+    Trains a DECOLLE network
+
+    Arguments:
+    gen_train: a dataloader
+    decolle_loss: a DECOLLE loss function, as defined in base_model
+    net: DECOLLE network
+    opt: optimizer
+    epoch: epoch number, for printing purposes only
+    burnin: time during which the dynamics will be run, but no updates are made
+    online_update: whether updates should be made at every timestep or at the end of the sequence.
+    '''
+    device = net.get_input_layer_device()
+    iter_gen_train = iter(gen_train)
+
+    act_rate = 0
+    total_loss =np.zeros(1)
+    s_total =0
+    loss_tv = torch.tensor(0.).to(device)
+    net.train()
+    if hasattr(net.LIF_layers[0], 'base_layer'):
+        dtype = net.LIF_layers[0].base_layer.weight.dtype
+    else:
+        dtype = net.LIF_layers[0].weight.dtype
+    batch_iter = 0
+    with torch.autograd.set_detect_anomaly(True):
+        for data_batch, target_batch in tqdm.tqdm(iter_gen_train, desc='Epoch {}'.format(epoch)):
+
+            data_batch = torch.Tensor(data_batch).type(dtype).to(device)
+            target_batch = torch.Tensor(target_batch).type(dtype).to(device)
+            if len(target_batch.shape) == 2:
+                # print('replicate targets for all timesteps')
+                target_batch = target_batch.unsqueeze(1)
+                shape_with_time = np.array(target_batch.shape)
+                shape_with_time[1] = data_batch.shape[1]
+                target_batch = target_batch.expand(*shape_with_time)
+
+            loss_mask = (target_batch.sum(2) > 0).unsqueeze(2).float()
+            # print('loss mask',loss_mask.shape, loss_mask)
+            # loss_mask = (data_batch.reshape(data_batch.shape[0],data_batch.shape[1],-1).mean(2)>0.01).unsqueeze(2).float()
+            # net.init(data_batch, burnin)
+            t_sample = data_batch.shape[1]
+            for k in (range(t_sample)):
+                # print('datautil',data_batch.shape)
+                s, u = net.forward(data_batch[:, k, :, :])
+                #print('s, tar',s.shape, target_batch[:, k, :].shape,s[0],target_batch[:, k, :][0])
+                loss_ = loss(s,target=target_batch[:, k, :])
+                #print('loss_', loss_,)
+                loss_tv = loss_.clone()+ loss_tv
+                ss = s.clone()
+                s_total += sum(ss.detach().cpu().numpy())
+
+                total_loss += loss_.clone().detach().cpu().numpy()
+
+                if online_update:           #cannot be used in bp
+                    opt.zero_grad()
+                    loss_.backward(retain_graph=True)
+                    opt.step()
+
+                    act_rate += s_total / t_sample
+                #act_rate += tonp(s_total.mean().data) / t_sample
+
+            if not online_update:
+                opt.zero_grad()
+                loss_tv.backward(retain_graph=True)
+                opt.step()
+
+                act_rate += s_total / t_sample
+
+            batch_iter += 1
+            if batches_per_epoch > 0:
+                if batch_iter >= batches_per_epoch: break
+
+        total_loss /= t_sample
+        print('Loss {0}'.format(total_loss))
+        print('Activity Rate {0}'.format(act_rate))
+    return total_loss, act_rate
+
+
+
+
+def testbp(gen_test, loss, net,  print_error = True, debug = False):
+    net.eval()
+    if hasattr(net.LIF_layers[0], 'base_layer'):
+        dtype = net.LIF_layers[0].base_layer.weight.dtype
+    else:
+        dtype = net.LIF_layers[0].weight.dtype
+    with torch.no_grad():
+        device = net.get_input_layer_device()
+        iter_data_labels = iter(gen_test)
+        test_res = []
+        test_labels = []
+        test_loss = 0
+
+        for data_batch, target_batch in tqdm.tqdm(iter_data_labels, desc='Testing'):
+            data_batch = torch.Tensor(data_batch).type(dtype).to(device)
+            target_batch = torch.Tensor(target_batch).type(dtype).to(device)
+
+            batch_size = data_batch.shape[0]
+            timesteps = data_batch.shape[1]
+            nclasses = target_batch.shape[2]
+
+
+            # net.init(data_batch, burnin)
+
+            for k in (range(timesteps)):
+                s, u = net.forward(data_batch[:, k, :, :])
+                loss_ = loss(s, target=target_batch[:,k])
+                test_loss += [tonp(loss_)]
+
+            test_labels += tonp(target_batch).sum(1).argmax(axis=-1).tolist()
+        test_acc  = accuracy(np.column_stack(test_res), np.column_stack(test_labels))
+        test_loss /= len(gen_test)
+
         if print_error:
             print(' '.join(['Error Rate L{0} {1:1.3}'.format(j, 1-v) for j, v in enumerate(test_acc)]))
     if debug:

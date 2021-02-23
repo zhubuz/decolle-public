@@ -9,7 +9,7 @@
 # Copyright : (c) UC Regents, Emre Neftci
 # Licence : GPLv2
 #-----------------------------------------------------------------------------
-from decolle.subnetmlp_decolle_model1 import subnetmlpDECOLLE, DECOLLELoss, LIFLayerVariableTau, LIFLayer
+from decolle.mlp_decolle_attn import mlpDECOLLE, DECOLLELoss, LIFLayerVariableTau, LIFLayer
 from decolle.utils import parse_args, train, test, accuracy, save_checkpoint, load_model_from_checkpoint, prepare_experiment, write_stats, cross_entropy_one_hot
 import datetime, os, socket, tqdm
 from loader_tests.create_dvsgestures_attn import create_attn_dataloader
@@ -17,11 +17,11 @@ import numpy as np
 import torch
 import sys
 CURRENT_TEST_DIR = os.path.dirname(os.path.realpath(__file__))
-sys.path.append(CURRENT_TEST_DIR + "/../loader_tests")
+#sys.path.append(CURRENT_TEST_DIR + "../loader_tests")
 import importlib
-os.environ['CUDA_VISIBLE_DEVICES'] = '1'
+#os.environ['CUDA_VISIBLE_DEVICES'] = '1'
 np.set_printoptions(precision=4)
-args = parse_args('parameters/params_dvsgestures_subnetmlp.yml')
+args = parse_args('parameters/params_dvsgestures_mlp.yml')
 device = args.device
 
 
@@ -37,13 +37,13 @@ verbose = args.verbose
 gen_train, gen_test = create_attn_dataloader(chunk_size_train=params['chunk_size_train'],
                                   chunk_size_test=params['chunk_size_test'],
                                   batch_size=params['batch_size'],
-                                  dt=params['deltat'],
+                                  dt= params['deltat'],
                                   num_workers=params['num_dl_workers'])
 
 data_batch, target_batch = next(iter(gen_train))
 data_batch = torch.Tensor(data_batch).to(device)
 target_batch = torch.Tensor(target_batch).to(device)
-print('data target',data_batch.shape, target_batch.shape,target_batch[0])
+print('data target',data_batch.shape, target_batch.shape)
 #d, t = next(iter(gen_train))
 input_shape = data_batch.shape[-3:]
 
@@ -52,7 +52,7 @@ if 'dropout' not in params.keys():
     params['dropout'] = [.5]
 
 ## Create Model, Optimizer and Loss
-net = subnetmlpDECOLLE( out_channels=params['out_channels'],
+net = mlpDECOLLE( out_channels=params['out_channels'],
                     Nhid=params['Nhid'],
                     Mhid=params['Mhid'],
                     kernel_size=params['kernel_size'],
@@ -94,8 +94,15 @@ else:
         loss[-1] = cross_entropy_one_hot
     decolle_loss = DECOLLELoss(net = net, loss_fn = loss, reg_l=reg_l)
 
+# def weights_init(m):
+#     if type(m) == torch.nn.Linear:
+#         torch.nn.init.normal_(m.weight.data, 20., 1.)
+#         print('init params',m, torch.max(m.weight.data),torch.min(m.weight.data))
+# net.apply(weights_init)
 ##Initialize
-net.init_parameters(data_batch)
+
+# net.init_parameters(data_batch)
+
 
 ##Resume if necessary
 if args.resume_from is not None:

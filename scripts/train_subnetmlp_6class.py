@@ -9,7 +9,7 @@
 # Copyright : (c) UC Regents, Emre Neftci
 # Licence : GPLv2
 #-----------------------------------------------------------------------------
-from decolle.subnetmlp_decolle_5class import subnetmlpDECOLLE, DECOLLELoss, LIFLayerVariableTau, LIFLayer
+from decolle.subnetmlp_decolle_6class import subnetmlpDECOLLE, DECOLLELoss, LIFLayerVariableTau, LIFLayer
 from decolle.utils import parse_args, train, test, accuracy, save_checkpoint, load_model_from_checkpoint, prepare_experiment, write_stats, cross_entropy_one_hot
 import datetime, os, socket, tqdm
 import numpy as np
@@ -18,7 +18,7 @@ import importlib
 from decolle.load_dvsraw import *
 os.environ['CUDA_VISIBLE_DEVICES'] = '1'
 np.set_printoptions(precision=4)
-args = parse_args('parameters/params_dvsgestures_subnetmlp5class.yml')
+args = parse_args('parameters/params_dvsgestures_subnetmlp6class.yml')
 device = args.device
 
 

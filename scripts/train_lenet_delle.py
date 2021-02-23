@@ -56,7 +56,7 @@ if hasattr(params['learning_rate'], '__len__'):
     opt = MultiOpt(*opts)
 else:
     opt = torch.optim.Adamax(net.get_trainable_parameters(), lr=params['learning_rate'], betas=params['betas'])
-
+print('opt',opt)
 reg_l = params['reg_l'] if 'reg_l' in params else None
 
 # if 'loss_scope' in params and params['loss_scope']=='crbp':

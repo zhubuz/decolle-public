@@ -1,7 +1,6 @@
 Nhid: []
 Mhid:
-- 1024
-- 512
+- 256
 - 256
 alpha:
 - 0.97
@@ -20,20 +19,20 @@ dataset: torchneuromorphic.dvs_gestures.dvsgestures_dataloaders
 deltat: 1000
 input_shape:
 - 1
-- 32
-- 32
+- 16
+- 16
 kernel_size:
 - 1
 lc_ampl: 0.5
-learning_rate: 1.0e-8
+learning_rate: 1.0e-9
 learning_method: 'rtrl'
 loss: smoothL1
 lr_drop_factor: 5
 lr_drop_interval: 30
 num_epochs: 200
 num_conv_layers: 0
-num_mlp_layers: 3
-num_layers: 3
+num_mlp_layers: 2
+num_layers: 2
 num_dl_workers: 4
 optimizer: adamax
 out_channels: 11

@@ -25,12 +25,12 @@ input_shape:
 kernel_size:
 - 1
 lc_ampl: 0.5
-learning_rate: 1.0e-9
+learning_rate: 1.0e-6
 learning_method: 'rtrl'
 loss: smoothL1
-lr_drop_factor: 2
-lr_drop_interval: 60
-num_epochs: 500
+lr_drop_factor: 1.5
+lr_drop_interval: 100
+num_epochs: 1500
 num_conv_layers: 0
 num_mlp_layers: 4
 num_layers: 4

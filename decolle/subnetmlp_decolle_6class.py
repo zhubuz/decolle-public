@@ -56,7 +56,7 @@ class subnetmlpDECOLLE(DECOLLEBase):
         super(subnetmlpDECOLLE, self).__init__()
 
         self.preHookFx = lambda x : torch.clamp(quantize(x), -8, 7)
-        l1_1, ro1_1 = self.decolle_linear(inF=16 * 16, outF=64, out_channels = 5,
+        l1_1, ro1_1 = self.decolle_linear(inF=16 * 16, outF=64, out_channels = 6,
                                                     alpha=alpha[0],
                                                     beta=beta[0],
                                                     alpharp=alpharp[0],
@@ -64,7 +64,7 @@ class subnetmlpDECOLLE(DECOLLEBase):
                                                     lc_ampl=lc_ampl,
                                                     lif_layer_type=LIFLayer,
                                                     do_detach=True if method == 'rtrl' else False)
-        l1_2, ro1_2 = self.decolle_linear(inF=16 * 16, outF=64, out_channels = 5,
+        l1_2, ro1_2 = self.decolle_linear(inF=16 * 16, outF=64, out_channels = 6,
                                                     alpha=alpha[0],
                                                     beta=beta[0],
                                                     alpharp=alpharp[0],
@@ -72,7 +72,7 @@ class subnetmlpDECOLLE(DECOLLEBase):
                                                     lc_ampl=lc_ampl,
                                                     lif_layer_type=LIFLayer,
                                                     do_detach=True if method == 'rtrl' else False)
-        l1_3, ro1_3 = self.decolle_linear(inF=16 * 16, outF=64, out_channels = 5,
+        l1_3, ro1_3 = self.decolle_linear(inF=16 * 16, outF=64, out_channels = 6,
                                                     alpha=alpha[0],
                                                     beta=beta[0],
                                                     alpharp=alpharp[0],
@@ -80,7 +80,7 @@ class subnetmlpDECOLLE(DECOLLEBase):
                                                     lc_ampl=lc_ampl,
                                                     lif_layer_type=LIFLayer,
                                                     do_detach=True if method == 'rtrl' else False)
-        l1_4, ro1_4 = self.decolle_linear(inF=16 * 16, outF=64, out_channels = 5,
+        l1_4, ro1_4 = self.decolle_linear(inF=16 * 16, outF=64, out_channels = 6,
                                                     alpha=alpha[0],
                                                     beta=beta[0],
                                                     alpharp=alpharp[0],
@@ -89,7 +89,7 @@ class subnetmlpDECOLLE(DECOLLEBase):
                                                     lif_layer_type=LIFLayer,
                                                     do_detach=True if method == 'rtrl' else False)
 
-        l2, ro2 = self.decolle_linear(inF=256, outF=256, out_channels = 5,
+        l2, ro2 = self.decolle_linear(inF=256, outF=256, out_channels = 6,
                                                 alpha=alpha[0],
                                                 beta=beta[0],
                                                 alpharp=alpharp[0],
@@ -134,7 +134,7 @@ class subnetmlpDECOLLE(DECOLLEBase):
         input3 = input[:, 1::2, 1::2].reshape((input.shape[0], -1))
         #print('in0',input0.shape)
         s1_1, u1_1 = self.LIF_layers[0](input0)
-        print('l0', torch.max(self.LIF_layers[0].base_layer.weight.data))
+        # print('l0', torch.max(self.LIF_layers[0].base_layer.weight.data))
         s1_1 = self.LIF_layers[0].sg_function(u1_1)
         r1_1 =  self.readout_layers[0](s1_1)
         # print('ro1_1', r1_1)

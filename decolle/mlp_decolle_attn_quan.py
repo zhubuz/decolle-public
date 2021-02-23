@@ -49,7 +49,7 @@ class mlpDECOLLE(DECOLLEBase):
         if len(alpharp) == 1:       alpharp = alpharp * num_layers
         if len(beta) == 1:          beta = beta * num_layers
         if not hasattr(dropout, '__len__'): dropout = [dropout]
-        if len(dropout) == 1:       self.dropout = dropout = dropout * num_layers
+        if len(dropout) == 1:       self.dropout = dropout * num_layers
         if Nhid is None:          self.Nhid = Nhid = []
         if Mhid is None:          self.Mhid = Mhid = []
 
@@ -63,7 +63,7 @@ class mlpDECOLLE(DECOLLEBase):
                                           lc_ampl=lc_ampl,
                                           lif_layer_type=LIFLayer,
                                           weightScale=150,
-                                          base = 'base',
+                                          base = 'dense',
                                           do_detach=True if method == 'rtrl' else False)
 
         l2, ro2 = self.decolle_linear(inF=256, outF=256, out_channels=11,
@@ -74,7 +74,7 @@ class mlpDECOLLE(DECOLLEBase):
                                       lc_ampl=lc_ampl,
                                       lif_layer_type=LIFLayer,
                                       weightScale=150,
-                                      base='base',
+                                      base='dense',
                                       do_detach=True if method == 'rtrl' else False)
 
         # l3, ro3 = self.decolle_linear(inF=256, outF=11, out_channels=11,
